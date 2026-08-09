@@ -34,7 +34,7 @@ logic_and     → equality ( "and" equality )* ;
 equality      → comparison ( ( "!=" | "==" ) comparison )* ;
 comparison    → term ( ( ">" | ">=" | "<" | "<=" ) term )* ;
 term          → factor ( ( "-" | "+" ) factor )* ;
-factor        → unary ( ( "/" | "*" ) unary )* ;
+factor        → unarliney ( ( "/" | "*" ) unary )* ;
 unary         → ( "!" | "-" ) unary | primary ;
 call          → primary ( "(" arguments? ")" )* ;
 arguments     → expression ( "," expression )* ;
@@ -70,9 +70,6 @@ class Parser {
         }
     }
 
-    private Expr expression(){
-        return assignment();
-    }
 
     private Stmt statement(){
         if(match(PRINT)) return printStatement();
@@ -192,6 +189,9 @@ class Parser {
 
         consume(RIGHT_BRACE, "Expect '}' after block.");
         return statements;
+    }
+    private Expr expression(){
+        return assignment();
     }
 
     private Expr assignment(){
