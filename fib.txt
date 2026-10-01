@@ -1,0 +1,8 @@
+print "it prints fibonachi sequence.";
+var fib = 0;
+for(var i = 1; i < 1000; ){
+    var temp = i;
+    print fib;
+    i = fib + i;
+    fib = temp;
+}

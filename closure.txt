@@ -1,0 +1,17 @@
+print "this test shows closure functionality";
+
+var a = 3;
+fun makeCounter() {
+    var i = 0;
+    fun count() {
+        print a;
+    }
+
+    count();
+    var a = 5;
+    count();     
+    return count;
+}
+var counter = makeCounter();
+counter(); // "1".
+counter();
